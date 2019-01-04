@@ -44,7 +44,7 @@ class App extends React.Component {
     }
 
      axios
-     .get(`/api/about:${id}`)
+     .get(`http://localhost:8080/api/about:${id}`)
       .then(response => {
         var split = response.data.description.split('.');
         var min = split[0] + '. ' + split[1] + '.';

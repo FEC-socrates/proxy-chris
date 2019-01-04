@@ -19,7 +19,7 @@ class News extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/news`)
+    axios.get(`http://localhost:8080/api/news`)
       .then(response => {
         console.log(response.data)
         this.setState({
@@ -33,7 +33,7 @@ class News extends React.Component {
     for (var i = 0; i < newNews.length; i++) {
       if(e.target.innerHTML === newNews[i].title || e.target.innerHTML === newNews[i].name || e.target.innerHTML === newNews[i].description) {
         newNews[i].views = Number(newNews[i].views) + 1;
-        axios.put("/save", newNews[i])
+        axios.put("http://localhost:8080/save", newNews[i])
           .then(response => {
             console.log('saved succesfully');
           });
