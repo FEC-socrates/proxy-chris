@@ -9,16 +9,10 @@ module.exports = {
     path: DIST_DIR,
   },
   module: {
-    plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: Infinity,
-      }),
-    ],
     rules: [
       {
         test: /\.jsx?/,
-        exclude: /(node_modules)/,
+        include: SRC_DIR,
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-react', '@babel/preset-env'],
