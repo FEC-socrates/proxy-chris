@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 const transactions = require('../database/transaction.js');
@@ -8,7 +9,7 @@ const port = 3333;
 
 app.use('/', express.static('./public'));
 app.use(/\/\d+\//, express.static('./public'));
-
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/stocks/:stockTicker', (req, res) => {

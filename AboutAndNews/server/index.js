@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = 8080;
 const db = require('../database/index.js');
 const bodyParser = require('body-parser');
 const path = require('path');
 
 app.use(bodyParser.json());
-
+app.use(cors());
 app.use('/', express.static('./public/'));
 app.use(/\/\d+\//, express.static('./public/'));
 
@@ -20,16 +21,16 @@ app.get('/api/about:id', (req, res) => {
     .then(data => {
       res.status(200);
       res.json(data);
-    })
-})
+    });
+});
 
 app.get('/api/news', (req, res) => {
   db.News.findAll()
     .then(data => {
       res.status(200);
       res.json(data);
-    })
-})
+    });
+});
 
 app.put('/save', (req, res) => {
   db.News.update(
