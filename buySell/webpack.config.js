@@ -9,6 +9,12 @@ module.exports = {
     path: DIST_DIR,
   },
   module: {
+    plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: Infinity,
+      }),
+    ],
     rules: [
       {
         test: /\.jsx?/,

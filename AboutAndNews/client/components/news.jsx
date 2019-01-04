@@ -21,7 +21,6 @@ class News extends React.Component {
   componentDidMount() {
     axios.get(`http://localhost:8080/api/news`)
       .then(response => {
-        console.log(response.data)
         this.setState({
           news: response.data
         });
@@ -56,8 +55,6 @@ class News extends React.Component {
   }
 
   render() {
-    console.log(this.props.about.id)
-
     var items = this.state.news.map((item, index) => {
       if (item.about_id === this.props.about.id) {
         return item;

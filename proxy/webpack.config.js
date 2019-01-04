@@ -1,11 +1,16 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
   entry: {
+    vendor: ["styled-components"],
     pageOne: '../AboutAndNews/client/index.jsx',
     pageTwo: '../buySell/client/src/index.jsx',
     pageThree: '../lineGraph/client/index.jsx'
+  },
+  externals: {
+    'styled-components' : 'styled'
   },
   output: {
     filename: '[name].js',
